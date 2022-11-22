@@ -1,0 +1,49 @@
+body {
+    background-color: #ACC8E5;
+    color: #112A46;
+}
+
+.potoProfil {
+    display: block;
+    margin: 0 auto;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
+
+.font {
+    text-align: justify;
+    font-family: 'Roboto Mono', monospace;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.font2 {
+    font-family: 'Gentium Book Basic', serif;
+    text-align: center;
+}
+
+.keTengah {
+    padding-left: 16% !important;
+}
+
+.btn1{
+    color: #ACC8E5 !important;
+    background-color: #112A46 !important;
+    border-color: #ACC8E5 !important;
+}
+
+.btn2 {
+    background-color: #ACC8E5 !important;
+    color: #112A46 !important;
+    border-color: #112A46 !important;
+}
+
+.logo {
+    margin-left: 15%;
+}
+
+.font0 {
+    font-family: 'Roboto Mono', monospace;
+}
