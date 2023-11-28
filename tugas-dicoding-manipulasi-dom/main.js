@@ -8,13 +8,13 @@ function generateId() {
     return +new Date();
 }
 
-function generateBookObject(id, title, author, year, isCompleted) {
+function generateBookObject(id, title, author, year, isComplete) {
     return {
         id,
         title,
         author,
         year,
-        isCompleted
+        isComplete
     }
 }
 
@@ -80,7 +80,7 @@ function loadDataFromStorage() {
 
 
 function makeBook(bookObject) {
-    const { id, title, author, year, isCompleted } = bookObject;
+    const { id, title, author, year, isComplete } = bookObject;
 
     const textTitle = document.createElement('h3');
     textTitle.innerText = title;
@@ -99,7 +99,7 @@ function makeBook(bookObject) {
     const actionContainer = document.createElement('div');
     actionContainer.classList.add('action');
 
-    if (isCompleted) {
+    if (isComplete) {
         const notYetButton = document.createElement('button');
         notYetButton.classList.add('green');
         notYetButton.innerText = 'Belum selesai dibaca';
@@ -137,14 +137,18 @@ function makeBook(bookObject) {
 function addBook() {
     const textTitle = document.getElementById('inputBookTitle').value;
     const textAuthor = document.getElementById('inputBookAuthor').value;
-    const textYear = document.getElementById('inputBookYear').value;
-    const isCompleted = document.getElementById('inputBookIsComplete');
+    const textYear = parseInt(document.getElementById('inputBookYear').value);
+    if(textYear < 0){
+        alert('Tahun tidak bisa negatif');
+        return;
+    }
+    const isComplete = document.getElementById('inputBookIsComplete');
 
     const generatedID = generateId();
-    const bookObject = generateBookObject(generatedID, textTitle, textAuthor, textYear, isCompleted.checked);
+    const bookObject = generateBookObject(generatedID, textTitle, textAuthor, textYear, isComplete.checked);
     books.push(bookObject);
 
-    if(isCompleted.checked){
+    if(isComplete.checked){
         document.getElementById('pointScrollDone').scrollIntoView();
     }else{
         document.getElementById('pointScrollNotYet').scrollIntoView();
@@ -161,7 +165,7 @@ function addBookToCompleted(todoId) {
 
     if (todoTarget == null) return;
 
-    todoTarget.isCompleted = true;
+    todoTarget.isComplete = true;
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
 }
@@ -181,7 +185,7 @@ function undoBookFromCompleted(todoId) {
     const todoTarget = findBook(todoId);
     if (todoTarget == null) return;
 
-    todoTarget.isCompleted = false;
+    todoTarget.isComplete = false;
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
 }
@@ -209,7 +213,7 @@ document.addEventListener(RENDER_EVENT, function () {
 
     for (const bookItem of books) {
         const bookElement = makeBook(bookItem);
-        if (bookItem.isCompleted) {
+        if (bookItem.isComplete) {
             listCompleted.append(bookElement);
         } else {
             uncompletedBookList.append(bookElement);
@@ -226,7 +230,7 @@ document.addEventListener(RENDER_EVENT_SEARCH, () => {
 
     for (const bookItem of searchBooks) {
         const bookElement = makeBook(bookItem);
-        if (bookItem.isCompleted) {
+        if (bookItem.isComplete) {
             listCompleted.append(bookElement);
         } else {
             uncompletedBookList.append(bookElement);
