@@ -159,3 +159,18 @@ main {
     background-color: darkred;
     color: white;
 }
+
+/* kalo ganjil beda 1, genap engga 
+ * max sebelum
+ * min sesudah
+ */
+@media only screen and (max-width: 444px) {
+    .green {
+        width: 100%;
+    }
+    
+    .red {
+        width: 100%;
+        margin-top: 0.5rem !important;
+    }
+}
