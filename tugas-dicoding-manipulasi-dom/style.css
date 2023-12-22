@@ -164,7 +164,7 @@ main {
  * max sebelum
  * min sesudah
  */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
     .green {
         width: 100%;
     }
