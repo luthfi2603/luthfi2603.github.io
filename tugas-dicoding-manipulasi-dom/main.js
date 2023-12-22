@@ -1,3 +1,5 @@
+alert('Lebar layar anda : ' + window.innerWidth);
+
 const books = [];
 const searchBooks = [];
 const RENDER_EVENT = 'render-book';
