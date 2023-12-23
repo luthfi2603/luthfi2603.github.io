@@ -1,4 +1,4 @@
-alert('Lebar layar anda : ' + window.innerWidth);
+alert('Lebar layar anda  : ' + window.innerWidth + 'px\nTinggi layar anda : ' + window.innerHeight + 'px');
 
 const books = [];
 const searchBooks = [];
